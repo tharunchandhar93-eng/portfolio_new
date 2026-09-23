@@ -9,7 +9,7 @@
     { id: 1, text: "Master HTML5 semantic layout structures", completed: true },
     { id: 2, text: "Deep dive into CSS Grid, Flexbox & Glassmorphism", completed: true },
     { id: 3, text: "Build Python scripts for Student Management System", completed: false },
-    { id: 4, text: "Practice Data Structures & Algorithms problem solving", completed: false },
+    { id: 4, text: "Build responsive modern web applications", completed: false },
     { id: 5, text: "Prepare for Junior Front-End Developer interviews", completed: false }
   ];
 
