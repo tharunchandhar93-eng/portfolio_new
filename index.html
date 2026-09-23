@@ -1,0 +1,1343 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tharun C | Future Software & Front-End Developer | Portfolio</title>yyyyyyyy
+
+  <!-- SEO & Meta -->
+  <meta name="description"
+    content="Official 3D interactive portfolio of Tharun C - Student, Learner, and Future Software Developer specializing in Front-End & Web Technologies.">
+  <meta name="keywords"
+    content="Tharun C, Software Developer, Front-End Developer, Junior Developer, Python, HTML, Web Development, Namakkal">
+  <meta name="author" content="Tharun C">
+  <meta name="theme-color" content="#05070e">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Tharun C | Future Software & Front-End Developer">
+  <meta property="og:description"
+    content="Explore Tharun C's 3D interactive portfolio, projects, technical skills roadmap, and academic journey.">
+  <meta property="og:type" content="website">
+
+  <!-- Favicon / Visual Token -->
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+
+  <!-- Three.js CDN for 3D WebGL Effects -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+
+<body>
+
+  <!-- Three.js Background WebGL Canvas -->
+  <canvas id="webgl-canvas"></canvas>
+
+  <!-- Ambient Light Orbs -->
+  <div class="ambient-glow top-left"></div>
+  <div class="ambient-glow bottom-right"></div>
+  <div class="ambient-glow center-mid"></div>
+
+  <!-- Custom Cursor Elements -->
+  <div class="custom-cursor"></div>
+  <div class="custom-cursor-follower"></div>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- ===================================================================
+       NAVIGATION BAR
+  =================================================================== -->
+  <header class="navbar-wrapper">
+    <nav class="navbar" id="navbar">
+      <a href="#hero" class="brand-logo">
+        <div class="logo-avatar">TC</div>
+        <div class="logo-text">THARUN<span>.C</span></div>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#skills" class="nav-link">Skills</a></li>
+        <li><a href="#projects" class="nav-link">Projects</a></li>
+        <li><a href="#education" class="nav-link">Education</a></li>
+        <li><a href="#sports" class="nav-link">Sports</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <!-- Sound FX Toggle -->
+        <button class="sound-toggle-btn" id="sound-toggle" title="Toggle Sound FX">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+            <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+          </svg>
+        </button>
+
+        <!-- Resume Modal Trigger -->
+        <button class="btn btn-secondary btn-sm" data-modal-open="resume-modal">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+            <polyline points="14 2 14 8 20 8"></polyline>
+            <line x1="16" y1="13" x2="8" y2="13"></line>
+            <line x1="16" y1="17" x2="8" y2="17"></line>
+            <polyline points="10 9 9 9 8 9"></polyline>
+          </svg>
+          Resume
+        </button>
+
+        <a href="#contact" class="btn btn-primary btn-sm">Get in Touch</a>
+
+        <!-- Mobile Menu Trigger -->
+        <button class="mobile-menu-btn" aria-label="Toggle Navigation">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Mobile Navigation Drawer -->
+  <div class="mobile-nav" id="mobile-nav">
+    <a href="#about">About Tharun <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+        stroke-width="2">
+        <polyline points="9 18 15 12 9 6"></polyline>
+      </svg></a>
+    <a href="#skills">Technical Skills <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+        stroke-width="2">
+        <polyline points="9 18 15 12 9 6"></polyline>
+      </svg></a>
+    <a href="#projects">Personal Projects <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+        stroke="currentColor" stroke-width="2">
+        <polyline points="9 18 15 12 9 6"></polyline>
+      </svg></a>
+    <a href="#education">Education & School <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+        stroke="currentColor" stroke-width="2">
+        <polyline points="9 18 15 12 9 6"></polyline>
+      </svg></a>
+    <a href="#sports">Football & Passion <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+        stroke="currentColor" stroke-width="2">
+        <polyline points="9 18 15 12 9 6"></polyline>
+      </svg></a>
+    <a href="#contact">Contact Info <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+        stroke-width="2">
+        <polyline points="9 18 15 12 9 6"></polyline>
+      </svg></a>
+  </div>
+
+  <main class="app-wrapper">
+
+    <!-- ===================================================================
+         1. HERO SECTION
+    =================================================================== -->
+    <section class="hero-section" id="hero">
+      <div class="container">
+        <div class="hero-grid">
+
+          <!-- Hero Left Column -->
+          <div class="hero-content">
+            <div class="hero-status-pill">
+              <span class="status-dot"></span>
+              <span>Available for Junior & Front-End Roles</span>
+            </div>
+
+            <p class="hero-greeting">Welcome to my Digital Space</p>
+            <h1 class="hero-name">
+              I'm <span class="gradient-text">THARUN C</span>
+            </h1>
+
+            <div class="hero-roles">
+              <span class="role-badge">Student</span>
+              <span>•</span>
+              <span class="role-badge">Learner</span>
+              <span>•</span>
+              <span class="role-badge">Future Developer</span>
+            </div>
+
+            <p class="hero-bio">
+              Aspiring Software Developer, Junior Developer, and Front-End Developer with a strong interest in
+              technology and problem-solving. Building modern web experiences and expanding technical frontiers.
+            </p>
+
+            <div class="hero-cta-group">
+              <a href="#projects" class="btn btn-primary">
+                Explore Projects
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </a>
+
+              <button class="btn btn-secondary" data-copy="6381829608" data-label="Phone">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path
+                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                  </path>
+                </svg>
+                6381829608
+              </button>
+
+              <button class="btn btn-outline" data-copy="tharun282007@gmail.com" data-label="Email">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                  <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+                Copy Email
+              </button>
+            </div>
+
+            <!-- Key Resume Metrics -->
+            <div class="hero-metrics">
+              <div class="metric-item">
+                <div class="metric-val">58.3<span>%</span></div>
+                <div class="metric-lbl">12th Higher Sec</div>
+              </div>
+              <div class="metric-item">
+                <div class="metric-val">56.8<span>%</span></div>
+                <div class="metric-lbl">10th SSLC Mark</div>
+              </div>
+              <div class="metric-item">
+                <div class="metric-val">Tamil Nadu</div>
+                <div class="metric-lbl">Senthamangalam, Namakkal</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Hero Right Column: 3D Holographic Card -->
+          <div class="hero-visual">
+            <div class="hero-card-3d glass-panel" data-tilt>
+              <div class="hero-card-header">
+                <div class="terminal-dots">
+                  <span class="terminal-dot red"></span>
+                  <span class="terminal-dot yellow"></span>
+                  <span class="terminal-dot green"></span>
+                </div>
+                <span class="id-tag">THARUN_DEV.sys</span>
+              </div>
+
+              <div class="developer-avatar-box">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+              </div>
+
+              <div class="developer-info">
+                <h3>Tharun C</h3>
+                <p>&lt;Future Developer /&gt;</p>
+              </div>
+
+              <div class="code-preview-snippet">
+                <div><span class="kw">const</span> developer = {</div>
+                <div style="padding-left: 1.25rem;"><span class="prop">name</span>: <span class="str">"Tharun C"</span>,
+                </div>
+                <div style="padding-left: 1.25rem;"><span class="prop">status</span>: <span class="str">"Student &
+                    Learner"</span>,</div>
+                <div style="padding-left: 1.25rem;"><span class="prop">coreStack</span>: [<span
+                    class="str">"HTML"</span>, <span class="str">"Python"</span>, <span class="str">"Web Dev"</span>],
+                </div>
+                <div style="padding-left: 1.25rem;"><span class="prop">roadmap</span>: [<span class="str">"CSS"</span>,
+                  <span class="str">"JS"</span>, <span class="str">"SQL"</span>, <span class="str">"Git"</span>, <span
+                    class="str">"DSA"</span>],</div>
+                <div style="padding-left: 1.25rem;"><span class="prop">passion</span>: <span
+                    class="str">"Football"</span>,</div>
+                <div style="padding-left: 1.25rem;"><span class="prop">careerInterest</span>: <span
+                    class="str">"Software / Front-End"</span></div>
+                <div>};</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         2. ABOUT / PROFILE SECTION
+    =================================================================== -->
+    <section id="about">
+      <div class="container">
+
+        <div class="section-header">
+          <div class="section-tag">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+              <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+            About Me
+          </div>
+          <h2 class="section-title">Driven by <span class="gradient-text">Curiosity & Growth</span></h2>
+          <p class="section-subtitle">A motivated, dedicated student aiming to shape modern software engineering
+            solutions.</p>
+        </div>
+
+        <div class="about-grid">
+
+          <!-- Main Profile Statement -->
+          <div class="glass-panel about-main-card" data-tilt>
+            <div class="about-quote">
+              "Motivated and enthusiastic student with a strong interest in technology and problem-solving. Eager to
+              learn new skills, improve continuously and build a successful career in the field of software
+              development."
+            </div>
+
+            <div class="pillars-grid">
+              <div class="pillar-item">
+                <div class="pillar-icon">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                    <polyline points="2 17 12 22 22 17"></polyline>
+                    <polyline points="2 12 12 17 22 12"></polyline>
+                  </svg>
+                </div>
+                <div class="pillar-title">Problem Solving</div>
+                <div class="pillar-desc">Analytical approach to breakdown challenges into logical code components.</div>
+              </div>
+
+              <div class="pillar-item">
+                <div class="pillar-icon">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                  </svg>
+                </div>
+                <div class="pillar-title">Continuous Improvement</div>
+                <div class="pillar-desc">Unstoppable drive to acquire modern skills, tools, and industry standards.
+                </div>
+              </div>
+
+              <div class="pillar-item">
+                <div class="pillar-icon">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                    <path d="M2 17l10 5 10-5"></path>
+                    <path d="M2 12l10 5 10-5"></path>
+                  </svg>
+                </div>
+                <div class="pillar-title">Career Aspirations</div>
+                <div class="pillar-desc">Targeting Software Developer, Junior Developer, and Front-End Developer roles.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sidebar: Target Roles & Academic Root -->
+          <div class="about-sidebar">
+            <div class="glass-panel sidebar-card" data-tilt>
+              <h4>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <circle cx="12" cy="12" r="6"></circle>
+                  <circle cx="12" cy="12" r="2"></circle>
+                </svg>
+                Career Interests
+              </h4>
+              <div class="career-interests-list">
+                <div class="career-interest-item">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                  Software Developer
+                </div>
+                <div class="career-interest-item">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                  Junior Developer
+                </div>
+                <div class="career-interest-item">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                  Front-End Developer
+                </div>
+              </div>
+            </div>
+
+            <div class="glass-panel sidebar-card" data-tilt>
+              <h4>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                  <circle cx="12" cy="10" r="3"></circle>
+                </svg>
+                Location & Origin
+              </h4>
+              <div class="location-badge">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                  <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                </svg>
+                <div class="location-details">
+                  <strong>Senthamangalam, Namakkal</strong>
+                  <span>Tamil Nadu, India</span>
+                  <div style="font-size: 0.78rem; color: var(--cyan); margin-top: 0.35rem;">Government Boys' Higher
+                    Secondary School</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         3. TECHNICAL & SOFT SKILLS SECTION
+    =================================================================== -->
+    <section id="skills">
+      <div class="container">
+
+        <div class="section-header">
+          <div class="section-tag">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="16 18 22 12 16 6"></polyline>
+              <polyline points="8 6 2 12 8 18"></polyline>
+            </svg>
+            Skills Matrix
+          </div>
+          <h2 class="section-title">Technical Expertise & <span class="gradient-text">Roadmap</span></h2>
+          <p class="section-subtitle">Proficiencies mastered today, alongside a structured roadmap of skills currently
+            being conquered.</p>
+        </div>
+
+        <!-- Filter Tab Buttons -->
+        <div class="skills-tab-nav">
+          <button class="skills-tab-btn active" data-filter="all">All Skills</button>
+          <button class="skills-tab-btn" data-filter="current">Current Tech Stack</button>
+          <button class="skills-tab-btn" data-filter="roadmap">Skills To Learn (Roadmap)</button>
+        </div>
+
+        <!-- Technical Skills Grid -->
+        <div class="skills-grid" id="skills-grid">
+
+          <!-- HTML -->
+          <div class="glass-panel skill-card" data-tilt data-category="current">
+            <div>
+              <div class="skill-card-top">
+                <div class="skill-icon-wrap">
+                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="16 18 22 12 16 6"></polyline>
+                    <polyline points="8 6 2 12 8 18"></polyline>
+                  </svg>
+                </div>
+                <span class="skill-badge active-stack">Proficient</span>
+              </div>
+              <h3 class="skill-name">HTML</h3>
+              <p class="skill-desc">Semantic document structuring, accessibility markup, clean DOM hierarchy, and SEO
+                architecture.</p>
+            </div>
+            <div class="skill-progress-bar">
+              <div class="skill-progress-fill" style="width: 85%;"></div>
+            </div>
+          </div>
+
+          <!-- Python -->
+          <div class="glass-panel skill-card" data-tilt data-category="current">
+            <div>
+              <div class="skill-card-top">
+                <div class="skill-icon-wrap">
+                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect>
+                    <rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect>
+                    <line x1="6" y1="6" x2="6.01" y2="6"></line>
+                    <line x1="6" y1="18" x2="6.01" y2="18"></line>
+                  </svg>
+                </div>
+                <span class="skill-badge active-stack">Proficient</span>
+              </div>
+              <h3 class="skill-name">Python</h3>
+              <p class="skill-desc">Core programming, control structures, functional scripting, algorithmic
+                problem-solving logic.</p>
+            </div>
+            <div class="skill-progress-bar">
+              <div class="skill-progress-fill" style="width: 78%;"></div>
+            </div>
+          </div>
+
+          <!-- Front-End Development -->
+          <div class="glass-panel skill-card" data-tilt data-category="current">
+            <div>
+              <div class="skill-card-top">
+                <div class="skill-icon-wrap">
+                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                    <line x1="8" y1="21" x2="16" y2="21"></line>
+                    <line x1="12" y1="17" x2="12" y2="21"></line>
+                  </svg>
+                </div>
+                <span class="skill-badge active-stack">Proficient</span>
+              </div>
+              <h3 class="skill-name">Front-End Development</h3>
+              <p class="skill-desc">Crafting responsive user interfaces, visual design systems, and cross-browser
+                experiences.</p>
+            </div>
+            <div class="skill-progress-bar">
+              <div class="skill-progress-fill" style="width: 80%;"></div>
+            </div>
+          </div>
+
+          <!-- Web Development -->
+          <div class="glass-panel skill-card" data-tilt data-category="current">
+            <div>
+              <div class="skill-card-top">
+                <div class="skill-icon-wrap">
+                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="2" y1="12" x2="22" y2="12"></line>
+                    <path
+                      d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z">
+                    </path>
+                  </svg>
+                </div>
+                <span class="skill-badge active-stack">Proficient</span>
+              </div>
+              <h3 class="skill-name">Web Development</h3>
+              <p class="skill-desc">End-to-end web structure, client-server models, responsive web apps, and modern web
+                standards.</p>
+            </div>
+            <div class="skill-progress-bar">
+              <div class="skill-progress-fill" style="width: 76%;"></div>
+            </div>
+          </div>
+
+          <!-- CSS (Roadmap) -->
+          <div class="glass-panel skill-card" data-tilt data-category="roadmap">
+            <div>
+              <div class="skill-card-top">
+                <div class="skill-icon-wrap">
+                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2"></polygon>
+                    <line x1="12" y1="22" x2="12" y2="15.5"></line>
+                    <polyline points="22 8.5 12 15.5 2 8.5"></polyline>
+                  </svg>
+                </div>
+                <span class="skill-badge roadmap">Roadmap</span>
+              </div>
+              <h3 class="skill-name">CSS</h3>
+              <p class="skill-desc">Advanced CSS layout models (Flexbox, Grid), 3D animations, custom glassmorphism,
+                responsive styles.</p>
+            </div>
+            <div class="skill-progress-bar">
+              <div class="skill-progress-fill" style="width: 65%;"></div>
+            </div>
+          </div>
+
+          <!-- JavaScript (Roadmap) -->
+          <div class="glass-panel skill-card" data-tilt data-category="roadmap">
+            <div>
+              <div class="skill-card-top">
+                <div class="skill-icon-wrap">
+                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                  </svg>
+                </div>
+                <span class="skill-badge roadmap">Roadmap</span>
+              </div>
+              <h3 class="skill-name">JavaScript</h3>
+              <p class="skill-desc">ES6+ syntax, asynchronous programming, DOM manipulation, interactive event
+                dispatching.</p>
+            </div>
+            <div class="skill-progress-bar">
+              <div class="skill-progress-fill" style="width: 62%;"></div>
+            </div>
+          </div>
+
+          <!-- SQL (Roadmap) -->
+          <div class="glass-panel skill-card" data-tilt data-category="roadmap">
+            <div>
+              <div class="skill-card-top">
+                <div class="skill-icon-wrap">
+                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+                    <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
+                    <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
+                  </svg>
+                </div>
+                <span class="skill-badge roadmap">Roadmap</span>
+              </div>
+              <h3 class="skill-name">SQL</h3>
+              <p class="skill-desc">Relational database design, table queries, data normalization, record filtering and
+                management.</p>
+            </div>
+            <div class="skill-progress-bar">
+              <div class="skill-progress-fill" style="width: 58%;"></div>
+            </div>
+          </div>
+
+          <!-- Git & GitHub (Roadmap) -->
+          <div class="glass-panel skill-card" data-tilt data-category="roadmap">
+            <div>
+              <div class="skill-card-top">
+                <div class="skill-icon-wrap">
+                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="18" cy="18" r="3"></circle>
+                    <circle cx="6" cy="6" r="3"></circle>
+                    <path d="M6 21V9a9 9 0 0 0 9 9"></path>
+                  </svg>
+                </div>
+                <span class="skill-badge roadmap">Roadmap</span>
+              </div>
+              <h3 class="skill-name">Git & GitHub</h3>
+              <p class="skill-desc">Source code version control, branching, committing, pull requests, and collaborative
+                repository workflows.</p>
+            </div>
+            <div class="skill-progress-bar">
+              <div class="skill-progress-fill" style="width: 60%;"></div>
+            </div>
+          </div>
+
+          <!-- Data Structures and Algorithms (Roadmap) -->
+          <div class="glass-panel skill-card" data-tilt data-category="roadmap">
+            <div>
+              <div class="skill-card-top">
+                <div class="skill-icon-wrap">
+                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="18" cy="5" r="3"></circle>
+                    <circle cx="6" cy="12" r="3"></circle>
+                    <circle cx="18" cy="19" r="3"></circle>
+                    <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+                    <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+                  </svg>
+                </div>
+                <span class="skill-badge roadmap">Roadmap</span>
+              </div>
+              <h3 class="skill-name">Data Structures & Algorithms</h3>
+              <p class="skill-desc">Arrays, stacks, queues, searching and sorting techniques, computational complexity
+                and optimization.</p>
+            </div>
+            <div class="skill-progress-bar">
+              <div class="skill-progress-fill" style="width: 55%;"></div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Soft Skills Grid -->
+        <div class="soft-skills-header">
+          <h3 style="font-family: var(--font-display); font-size: 1.75rem; color: #fff;">
+            Professional <span class="gradient-text">Soft Skills</span>
+          </h3>
+          <p style="color: var(--text-muted); font-size: 0.95rem; margin-top: 0.25rem;">Core personal strengths
+            highlighted on my resume</p>
+        </div>
+
+        <div class="soft-skills-grid">
+          <div class="glass-panel soft-skill-card" data-tilt>
+            <div class="soft-skill-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                <line x1="12" y1="17" x2="12.01" y2="17"></line>
+              </svg>
+            </div>
+            <div class="soft-skill-title">Problem Solving</div>
+          </div>
+
+          <div class="glass-panel soft-skill-card" data-tilt>
+            <div class="soft-skill-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+              </svg>
+            </div>
+            <div class="soft-skill-title">Communication</div>
+          </div>
+
+          <div class="glass-panel soft-skill-card" data-tilt>
+            <div class="soft-skill-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+              </svg>
+            </div>
+            <div class="soft-skill-title">Teamwork</div>
+          </div>
+
+          <div class="glass-panel soft-skill-card" data-tilt>
+            <div class="soft-skill-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="23 4 23 10 17 10"></polyline>
+                <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path>
+              </svg>
+            </div>
+            <div class="soft-skill-title">Adaptability</div>
+          </div>
+
+          <div class="glass-panel soft-skill-card" data-tilt>
+            <div class="soft-skill-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+              </svg>
+            </div>
+            <div class="soft-skill-title">Willingness to Learn</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         4. PERSONAL PROJECTS SECTION
+    =================================================================== -->
+    <section id="projects">
+      <div class="container">
+
+        <div class="section-header">
+          <div class="section-tag">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
+            </svg>
+            Projects Showcase
+          </div>
+          <h2 class="section-title">Personal <span class="gradient-text">Project Works</span></h2>
+          <p class="section-subtitle">Recommended and active projects from my resume, blending practical utility and web
+            development.</p>
+        </div>
+
+        <div class="projects-grid">
+
+          <!-- Project 1: Personal Portfolio Website -->
+          <div class="glass-panel project-card" data-tilt>
+            <div class="project-top">
+              <span class="project-num">PROJECT // 01</span>
+              <span class="project-status-tag live">Live & Active</span>
+            </div>
+
+            <h3 class="project-title">Personal Portfolio Website</h3>
+
+            <p class="project-desc">
+              High-performance, cinematic 3D personal portfolio featuring real-time WebGL particle constellations,
+              frosted glassmorphism, responsive architecture, sound synthesis, and resume fidelity.
+            </p>
+
+            <div class="project-tech-tags">
+              <span class="tech-tag">HTML5</span>
+              <span class="tech-tag">CSS3</span>
+              <span class="tech-tag">JavaScript</span>
+              <span class="tech-tag">Three.js</span>
+              <span class="tech-tag">Glassmorphism</span>
+            </div>
+
+            <div class="project-actions">
+              <a href="#hero" class="btn btn-primary btn-sm">
+                <span>Current View</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="18 15 12 9 6 15"></polyline>
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <!-- Project 2: Student Management System -->
+          <div class="glass-panel project-card" data-tilt>
+            <div class="project-top">
+              <span class="project-num">PROJECT // 02</span>
+              <span class="project-status-tag roadmap">Roadmap Project</span>
+            </div>
+
+            <h3 class="project-title">Student Management System</h3>
+
+            <p class="project-desc">
+              A comprehensive educational record management solution designed in Python & SQL to streamline student
+              details, academic percentage tracking (10th/12th marks), attendance, and school reports.
+            </p>
+
+            <div class="project-tech-tags">
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">Database (SQL)</span>
+              <span class="tech-tag">Data Tracking</span>
+              <span class="tech-tag">CLI / GUI</span>
+            </div>
+
+            <div class="project-actions">
+              <button class="btn btn-secondary btn-sm" data-modal-open="sms-info-modal">
+                <span>View Architecture</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <line x1="12" y1="16" x2="12" y2="12"></line>
+                  <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- Project 3: To-Do List Web Application (Interactive Demo!) -->
+          <div class="glass-panel project-card" data-tilt>
+            <div class="project-top">
+              <span class="project-num">PROJECT // 03</span>
+              <span class="project-status-tag live">Interactive Live Demo</span>
+            </div>
+
+            <h3 class="project-title">To-Do List Web Application</h3>
+
+            <p class="project-desc">
+              Productivity task management application built with dynamic DOM manipulation, real-time status toggles,
+              persistent storage, and responsive task filtering.
+            </p>
+
+            <div class="project-tech-tags">
+              <span class="tech-tag">JavaScript</span>
+              <span class="tech-tag">HTML5 Semantic</span>
+              <span class="tech-tag">CSS Flexbox</span>
+              <span class="tech-tag">LocalStorage</span>
+            </div>
+
+            <div class="project-actions">
+              <button class="btn btn-primary btn-sm" data-modal-open="todo-modal">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                </svg>
+                <span>Launch Live App</span>
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         5. EDUCATION SECTION
+    =================================================================== -->
+    <section id="education">
+      <div class="container">
+
+        <div class="section-header">
+          <div class="section-tag">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+              <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+            </svg>
+            Academic Foundation
+          </div>
+          <h2 class="section-title">Education <span class="gradient-text">Journey</span></h2>
+          <p class="section-subtitle">Official educational milestones and percentages verified from my resume.</p>
+        </div>
+
+        <div class="education-container">
+          <div class="timeline-spine"></div>
+
+          <!-- Higher Secondary (12th) -->
+          <div class="education-card-item">
+            <div class="timeline-node"></div>
+            <div class="glass-panel education-card-content" data-tilt>
+              <div class="edu-header-row">
+                <div>
+                  <h3 class="edu-title">Higher Secondary (12th)</h3>
+                  <div class="edu-school-name">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                      <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                    </svg>
+                    Government Boys' Higher Secondary School, Senthamangalam, Namakkal
+                  </div>
+                </div>
+
+                <div class="edu-badge-score">
+                  58.3<span>%</span>
+                </div>
+              </div>
+
+              <p class="edu-desc">
+                Completed 12th standard curriculum establishing key analytical thinking, science, and foundational
+                mathematics that power logical algorithm formulation.
+              </p>
+            </div>
+          </div>
+
+          <!-- Secondary (10th / SSLC) -->
+          <div class="education-card-item">
+            <div class="timeline-node"></div>
+            <div class="glass-panel education-card-content" data-tilt>
+              <div class="edu-header-row">
+                <div>
+                  <h3 class="edu-title">Secondary (10th / SSLC)</h3>
+                  <div class="edu-school-name">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                      <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                    </svg>
+                    Government Boys' Higher Secondary School, Senthamangalam, Namakkal
+                  </div>
+                </div>
+
+                <div class="edu-badge-score">
+                  56.8<span>%</span>
+                </div>
+              </div>
+
+              <p class="edu-desc">
+                Secondary School Leaving Certificate (SSLC) graduation with consistent performance, discipline, and
+                active involvement in school sports and technology exploration.
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         6. SPORTS & PASSION (INTERACTIVE FOOTBALL FEATURE)
+    =================================================================== -->
+    <section id="sports">
+      <div class="container">
+
+        <div class="section-header">
+          <div class="section-tag">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polygon points="12 8 8 12 12 16 16 12 12 8"></polygon>
+            </svg>
+            Athletic Passion
+          </div>
+          <h2 class="section-title">Sports & <span class="gradient-text">Football</span></h2>
+          <p class="section-subtitle">"Passionate about playing and watching football." The pitch teaches strategy,
+            agility, and team cohesion.</p>
+        </div>
+
+        <div class="sports-feature-grid">
+
+          <!-- Sports Narrative -->
+          <div class="glass-panel sports-content" data-tilt>
+            <div class="sports-quote">
+              "Passionate about playing and watching football."
+            </div>
+
+            <p style="color: var(--text-muted); font-size: 1rem; line-height: 1.7;">
+              Football is more than a game—it instills the rapid decision-making, spatial awareness, and resilience
+              essential for developing great software. On the pitch and in the code editor, precision and teamwork lead
+              to victory.
+            </p>
+
+            <div class="sports-parallels">
+              <div class="parallel-card">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="9" cy="7" r="4"></circle>
+                </svg>
+                <span><strong>Team Synergy:</strong> Flawless coordination with teammates, matching code
+                  collaboration.</span>
+              </div>
+
+              <div class="parallel-card">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                </svg>
+                <span><strong>Fast Adaptation:</strong> Reading changing match dynamics mirroring agile
+                  iteration.</span>
+              </div>
+
+              <div class="parallel-card">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <polyline points="12 6 12 12 14 14"></polyline>
+                </svg>
+                <span><strong>Persistence:</strong> Sustained focus from kickoff to the final whistle.</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3D Interactive Football Box -->
+          <div class="football-interactive-box">
+            <div id="football-canvas-container"></div>
+
+            <div class="football-controls-overlay">
+              <span>Drag to spin • Click to bounce</span>
+              <button class="kick-ball-btn" id="kick-ball-btn">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                </svg>
+                Kick Ball
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         7. CONTACT & CONNECT SECTION
+    =================================================================== -->
+    <section id="contact">
+      <div class="container">
+
+        <div class="section-header">
+          <div class="section-tag">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+              <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+            Contact Tharun
+          </div>
+          <h2 class="section-title">Let's <span class="gradient-text">Build Something Great</span></h2>
+          <p class="section-subtitle">Reach out directly via phone or email for opportunities, collaborations, or
+            developer roles.</p>
+        </div>
+
+        <div class="contact-grid">
+
+          <!-- Contact Direct Cards -->
+          <div class="contact-info-panel">
+
+            <!-- Phone -->
+            <div class="glass-panel contact-card-item" data-tilt>
+              <div class="contact-card-left">
+                <div class="contact-card-icon">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path
+                      d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                    </path>
+                  </svg>
+                </div>
+                <div class="contact-card-meta">
+                  <h5>Phone Number</h5>
+                  <a href="tel:6381829608">6381829608</a>
+                </div>
+              </div>
+              <button class="copy-btn" data-copy="6381829608" data-label="Phone" title="Copy Phone Number">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                </svg>
+              </button>
+            </div>
+
+            <!-- Email -->
+            <div class="glass-panel contact-card-item" data-tilt>
+              <div class="contact-card-left">
+                <div class="contact-card-icon">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                    <polyline points="22,6 12,13 2,6"></polyline>
+                  </svg>
+                </div>
+                <div class="contact-card-meta">
+                  <h5>Email Address</h5>
+                  <a href="mailto:tharun282007@gmail.com">tharun282007@gmail.com</a>
+                </div>
+              </div>
+              <button class="copy-btn" data-copy="tharun282007@gmail.com" data-label="Email" title="Copy Email">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                </svg>
+              </button>
+            </div>
+
+            <!-- Location -->
+            <div class="glass-panel contact-card-item" data-tilt>
+              <div class="contact-card-left">
+                <div class="contact-card-icon">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                    <circle cx="12" cy="10" r="3"></circle>
+                  </svg>
+                </div>
+                <div class="contact-card-meta">
+                  <h5>Location & Institute</h5>
+                  <p>Government Boys' HSS, Senthamangalam, Namakkal, Tamil Nadu</p>
+                </div>
+              </div>
+              <button class="copy-btn" data-copy="Government Boys' Higher Secondary School, Senthamangalam, Namakkal"
+                data-label="Location" title="Copy Location">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                </svg>
+              </button>
+            </div>
+
+          </div>
+
+          <!-- Interactive Message Composer -->
+          <div class="glass-panel contact-form-panel" data-tilt>
+            <h3>Send a Message</h3>
+            <p>Fill out this form to draft a direct email message to Tharun C.</p>
+
+            <form id="contact-form">
+              <div class="form-group">
+                <label class="form-label" for="sender-name">Your Name</label>
+                <input type="text" id="sender-name" class="form-input" placeholder="e.g. John Doe / Tech Recruiter"
+                  required>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="sender-email">Your Email Address</label>
+                <input type="email" id="sender-email" class="form-input" placeholder="e.g. contact@company.com"
+                  required>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="message-subject">Subject</label>
+                <input type="text" id="message-subject" class="form-input"
+                  placeholder="e.g. Front-End / Junior Developer Opportunity" required>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="message-text">Message</label>
+                <textarea id="message-text" class="form-textarea"
+                  placeholder="Hello Tharun, I came across your portfolio..." required></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-primary" style="width: 100%;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="22" y1="2" x2="11" y2="13"></line>
+                  <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                </svg>
+                Send Message to Tharun
+              </button>
+            </form>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===================================================================
+       FOOTER
+  =================================================================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <h4>THARUN C</h4>
+          <p>Student • Learner • Future Developer</p>
+        </div>
+
+        <button class="back-to-top-btn" id="back-to-top">
+          <span>Back to Top</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="18 15 12 9 6 15"></polyline>
+          </svg>
+        </button>
+      </div>
+
+      <div class="footer-bottom">
+        <div>
+          &copy; 2026 Tharun C. Crafted with 3D WebGL, modern glassmorphism & semantic standards.
+        </div>
+        <div>
+          Senthamangalam, Namakkal, Tamil Nadu • Primary Source: Official Resume
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===================================================================
+       MODAL 1: TO-DO WEB APPLICATION LIVE DEMO
+  =================================================================== -->
+  <div class="modal-overlay" id="todo-modal">
+    <div class="modal-content">
+      <button class="modal-close-btn" data-modal-close aria-label="Close Modal">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+
+      <div class="section-tag" style="margin-bottom: 0.75rem;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="9 11 12 14 22 4"></polyline>
+          <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+        </svg>
+        Live Interactive Demo
+      </div>
+      <h3 style="font-family: var(--font-display); font-size: 1.8rem; color: #fff; margin-bottom: 0.5rem;">
+        To-Do List Web Application
+      </h3>
+      <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem;">
+        Experience this playable mini-app directly on page. Add tasks, toggle completion, and see instant state
+        management with local persistence.
+      </p>
+
+      <div class="todo-demo-box">
+        <form id="todo-form" class="todo-input-row">
+          <input type="text" id="todo-input" class="todo-input" placeholder="Enter a new development task..." required>
+          <button type="submit" class="todo-add-btn">Add Task</button>
+        </form>
+
+        <div
+          style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem; color: var(--text-muted); font-size: 0.85rem;">
+          <span>Active Task Queue</span>
+          <span id="todo-count-badge" style="color: var(--cyan); font-weight: 600;">0 pending</span>
+        </div>
+
+        <div class="todo-list-container" id="todo-list-container">
+          <!-- Populated by js/todo-demo.js -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================================================================
+       MODAL 2: STUDENT MANAGEMENT SYSTEM ARCHITECTURE INFO
+  =================================================================== -->
+  <div class="modal-overlay" id="sms-info-modal">
+    <div class="modal-content">
+      <button class="modal-close-btn" data-modal-close aria-label="Close Modal">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+
+      <div class="section-tag" style="margin-bottom: 0.75rem;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+          <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+        </svg>
+        Architecture Breakdown
+      </div>
+      <h3 style="font-family: var(--font-display); font-size: 1.8rem; color: #fff; margin-bottom: 0.5rem;">
+        Student Management System
+      </h3>
+      <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem;">
+        Recommended project design for school/college record administration, derived from Tharun's resume roadmap.
+      </p>
+
+      <div style="display: flex; flex-direction: column; gap: 1rem; color: var(--text-main);">
+        <div
+          style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); padding: 1.25rem; border-radius: var(--radius-sm);">
+          <strong style="color: var(--cyan); display: block; margin-bottom: 0.35rem;">1. Core Modules:</strong>
+          <ul style="padding-left: 1.25rem; font-size: 0.9rem; color: var(--text-muted); line-height: 1.6;">
+            <li>Student Enrollment & Profile Records (Name, Roll, Contact, Location)</li>
+            <li>Examination & Percentage Calculator (10th/12th Marks Analysis)</li>
+            <li>Database Persistence with Structured SQL Tables</li>
+          </ul>
+        </div>
+
+        <div
+          style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); padding: 1.25rem; border-radius: var(--radius-sm);">
+          <strong style="color: var(--blue-light); display: block; margin-bottom: 0.35rem;">2. Technology
+            Roadmap:</strong>
+          <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.6;">
+            Built with <strong>Python</strong> backend logic, connected to relational SQL databases for high integrity
+            record queries, with potential front-end web dashboard integration.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================================================================
+       MODAL 3: RESUME DOCUMENT PREVIEW
+  =================================================================== -->
+  <div class="modal-overlay" id="resume-modal">
+    <div class="modal-content" style="max-width: 820px;">
+      <button class="modal-close-btn" data-modal-close aria-label="Close Modal">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+
+      <div
+        style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
+        <h3 style="font-family: var(--font-display); font-size: 1.6rem; color: #fff;">
+          Official Resume Verification
+        </h3>
+        <button class="btn btn-primary btn-sm" onclick="window.print()">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="6 9 6 2 18 2 18 9"></polyline>
+            <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+            <rect x="6" y="14" width="12" height="8"></rect>
+          </svg>
+          Print / Save PDF
+        </button>
+      </div>
+
+      <!-- Printable Resume Sheet Replica -->
+      <div class="resume-sheet">
+        <div class="resume-header">
+          <div>
+            <h2>THARUN C</h2>
+            <p>STUDENT | LEARNER | FUTURE DEVELOPER</p>
+          </div>
+          <div style="text-align: right; font-size: 0.85rem; color: #475569; line-height: 1.5;">
+            <div><strong>📞</strong> 6381829608</div>
+            <div><strong>✉️</strong> tharun282007@gmail.com</div>
+            <div><strong>📍</strong> Senthamangalam, Namakkal</div>
+          </div>
+        </div>
+
+        <div class="resume-grid">
+          <div>
+            <div class="resume-section-title">Profile</div>
+            <p style="font-size: 0.88rem; color: #334155; line-height: 1.6; margin-bottom: 1.25rem;">
+              Motivated and enthusiastic student with a strong interest in technology and problem-solving. Eager to
+              learn new skills, improve continuously and build a successful career in the field of software development.
+            </p>
+
+            <div class="resume-section-title">Education</div>
+            <div style="margin-bottom: 1rem; font-size: 0.88rem;">
+              <strong>Higher Secondary (12th)</strong> — <span style="color: #2563eb; font-weight: 700;">58.3%</span>
+              <div style="color: #64748b;">Government Boys' Higher Secondary School, Senthamangalam, Namakkal</div>
+            </div>
+            <div style="margin-bottom: 1.25rem; font-size: 0.88rem;">
+              <strong>Secondary (10th / SSLC)</strong> — <span style="color: #2563eb; font-weight: 700;">56.8%</span>
+              <div style="color: #64748b;">Government Boys' Higher Secondary School, Senthamangalam, Namakkal</div>
+            </div>
+
+            <div class="resume-section-title">Sports & Passions</div>
+            <p style="font-size: 0.88rem; color: #334155;">
+              <strong>Football:</strong> Passionate about playing and watching football.
+            </p>
+          </div>
+
+          <div>
+            <div class="resume-section-title">Technical Skills</div>
+            <div style="margin-bottom: 0.75rem; font-size: 0.88rem;">
+              <strong>Programming & Web Technologies:</strong>
+              <div style="color: #2563eb; margin-top: 0.25rem;">HTML | Python | Front-End Development | Web Development
+              </div>
+            </div>
+            <div style="margin-bottom: 1.25rem; font-size: 0.88rem;">
+              <strong>Skills to Learn:</strong>
+              <div style="color: #64748b; margin-top: 0.25rem;">CSS | JavaScript | SQL | Git | GitHub | Data Structures
+                and Algorithms</div>
+            </div>
+
+            <div class="resume-section-title">Soft Skills</div>
+            <ul
+              style="padding-left: 1.25rem; font-size: 0.88rem; color: #334155; line-height: 1.6; margin-bottom: 1.25rem;">
+              <li>Problem Solving</li>
+              <li>Communication</li>
+              <li>Teamwork</li>
+              <li>Adaptability</li>
+              <li>Willingness to Learn</li>
+            </ul>
+
+            <div class="resume-section-title">Career Interest</div>
+            <p style="font-size: 0.88rem; color: #334155;">
+              Aspiring to become a <strong>Software Developer</strong>, <strong>Junior Developer</strong>, or
+              <strong>Front-End Developer</strong>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript Modules -->
+  <script src="js/three-scene.js"></script>
+  <script src="js/todo-demo.js"></script>
+  <script src="js/main.js"></script>
+</body>
+
+</html>
